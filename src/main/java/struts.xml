@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts  
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="global"></constant>
+	<package name="register" extends="struts-default">
+	<interceptors>
+		<interceptor name="ageGroupInterceptor" class="actionPackage.AgeGroupInterceptor"></interceptor>
+		<interceptor name="testInterceptor" class="actionPackage.TestInterceptor"></interceptor>
+		<interceptor-stack name="myStack">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="testInterceptor"></interceptor-ref>
+			<interceptor-ref name="ageGroupInterceptor"></interceptor-ref>
+		</interceptor-stack>
+	</interceptors>
+		<action name="registerAction" class="actionPackage.RegisterAction">
+			<interceptor-ref name="myStack"></interceptor-ref>
+			<result name="welcome">/Welcome.jsp</result>
+			<result name="input">/Register.jsp</result>
+		</action>
+		<action name="changelocaleaction" class="actionPackage.ChangeLocalAction">
+			<result name="input">/Register.jsp</result>
+		</action>
+	</package>
+	<package name="login" extends="struts-default">
+		<action name="loginaction" class="actionPackage.LoginAction">
+			<result name="success">/loginSuccess.jsp</result>
+			<result name="input">/Login.jsp</result>
+		</action>
+		<action name="logoutaction" class="actionPackage.LogoutAction">
+			<result name="input">/Login.jsp</result>
+		</action>
+		<action name="showProduct" class="actionPackage.ShowProductAction">
+			<result name="success">/AllProduct.jsp</result>
+		</action>
+		<action name="addnewaction" class="actionPackage.AddNewProductAction">
+			<result name="success">/loginSuccess.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="updateproductaction" class="actionPackage.UpdateProductAction">
+			<result name="success">/updateProduct.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="savechanges" class="actionPackage.SaveUpdateAction">
+			<result name="success">/loginSuccess.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="deleteaction" class="actionPackage.DeleteAction">
+			<result name="success">/loginSuccess.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
+</struts>
