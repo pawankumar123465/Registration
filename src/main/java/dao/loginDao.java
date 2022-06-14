@@ -18,7 +18,7 @@ public class loginDao
 	
 	public static Boolean isValidUser(Login user)
 	{
-		System.out.println("hello tseting push");
+		System.out.println("hello testing");
 		PreparedStatement statement;
 		Boolean isvalid= false;
 		Connection connection=null;
